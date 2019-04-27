@@ -4,36 +4,33 @@ Search = React.createClass({
             searchingText: ''
         };
     },
-
-    handleChange: function(event) {
+    handleChange: function (event) {
         var searchingText = event.target.value;
-        this.setState({searchingText: searchingText});
+        this.setState({ searchingText: searchingText });
 
-        if (searchingText.lenght > 2) {
+        if (searchingText.length > 2) {
             this.props.onSearch(searchingText);
         }
     },
 
-    handleKeyUp: function(event) {
-        if(event.keyCode === 13) {
+    handleKeyUp: function (event) {
+        if (event.keyCode === 13) {
             this.props.onSearch(this.state.searchingText);
         }
     },
 
-    render: function() {
-        var styles = {
-            fontSize: '1.5em',
-            width: '90%',
-            maxWidth: '350px'
-        };
+    render: function () {
+        var styles = { fontSize: '1.5em', width: '90%', maxWidth: '350px' };
 
-    return <input
-                type='text'
+        return (
+            <input
+                type="text"
                 onChange={this.handleChange}
                 onKeyUp={this.handleKeyUp}
                 placeholder="Tutaj wpisz wyszukiwaną frazę"
                 style={styles}
-                value={this.state.searchTerm}
+                value={this.state.searchingText}
             />
+        );
     }
 });
